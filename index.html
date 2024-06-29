@@ -29,7 +29,6 @@
     </div>
 
     <script>
-        // Fungsi untuk mendapatkan tanggal dan waktu terkini
         function getCurrentDateTime() {
             let now = new Date();
             let date = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
@@ -37,42 +36,32 @@
             return `${date}, ${time}`;
         }
 
-        // Mengatur waktu terkini pada elemen dengan id "currentDateTime"
         function updateCurrentDateTime() {
             document.getElementById("currentDateTime").textContent = getCurrentDateTime();
         }
 
-        // Memanggil updateCurrentDateTime setiap detik untuk mengupdate waktu
         setInterval(updateCurrentDateTime, 1000);
 
-        // Meng-handle submit form untuk menghitung persamaan kuadrat
         document.getElementById("quadraticForm").addEventListener("submit", function (event) {
             event.preventDefault();
 
-            // Mengambil nilai koefisien a, b, dan c dari form
             let a = parseFloat(document.getElementById("coefA").value);
             let b = parseFloat(document.getElementById("coefB").value);
             let konstanta = parseFloat(document.getElementById("coefC").value);
 
-            // Menghitung diskriminan
             let discriminant = b * b - 4 * a * c;
 
-            // Inisialisasi variabel untuk hasil
             let result;
 
-            // Mengecek apakah diskriminan kurang dari 0
             if (discriminant < 0) {
                 result = "Not Found";
             } else {
-                // Menghitung akar-akar persamaan kuadrat
                 let x1 = (-b + Math.sqrt(discriminant)) / (2 * a);
                 let x2 = (-b - Math.sqrt(discriminant)) / (2 * a);
 
-                // Format hasil dengan dua desimal
                 result = `Answer: x1 = ${x1.toFixed(2)}, x2 = ${x2.toFixed(2)}`;
             }
 
-            // Menampilkan hasil di dalam div dengan id "result"
             document.getElementById("result").textContent = result;
         });
     </script>
